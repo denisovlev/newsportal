@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+		title News portal
+		== stylesheet_link_tag "application", :medial => "all"
+		== javascript_include_tag "application"
+		== csrf_meta_tags
+
+	body
+		#wrap
+			.container
+				= render template: "layouts/header"
+				= yield
+			#push
+		= render template: "layouts/footer"
