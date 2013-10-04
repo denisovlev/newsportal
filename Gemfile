@@ -23,11 +23,11 @@ end
 
 gem 'jquery-rails'
 gem 'pg'
-gem 'devise'
-gem 'redactor-rails'
-gem 'will_paginate'
-gem 'activeadmin'
-gem 'sidekiq'
+#gem 'devise'
+#gem 'redactor-rails'
+#gem 'will_paginate'
+#gem 'activeadmin'
+#gem 'sidekiq'
 gem 'slim'
 
 # To use ActiveModel has_secure_password
