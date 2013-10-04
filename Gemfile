@@ -23,7 +23,7 @@ end
 
 gem 'jquery-rails'
 gem 'pg'
-#gem 'devise'
+gem 'devise', '3.0.3'
 #gem 'redactor-rails'
 #gem 'will_paginate'
 #gem 'activeadmin'
