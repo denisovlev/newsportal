@@ -1,0 +1,13 @@
+div
+	h2  
+		a 
+		= article.header
+	p 
+		= article.preview
+	- if article.categories.any?
+		ul
+			- article.categories.each do |cat|
+				li
+					= link_to cat.name, category_path(cat)
+	= link_to('View more', article)
+	hr

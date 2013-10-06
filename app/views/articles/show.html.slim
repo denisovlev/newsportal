@@ -1,0 +1,10 @@
+h1
+	= @article.header
+p
+	== @article.body
+
+- if @article.categories
+	ul
+		- @article.categories.each do |cat|
+			li
+				= link_to cat.name, category_path(cat)

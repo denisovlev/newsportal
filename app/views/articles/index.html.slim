@@ -1,0 +1,10 @@
+= @articles.inspect
+h1 
+	- if @category
+		| Articles in #{@category.name}
+	- else 
+		| Articles
+.row
+	.span8
+		= render(partial: 'articles/article', collection: @articles)
+		= paginate @articles

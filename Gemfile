@@ -22,12 +22,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-migrate-rails'
 gem 'pg'
 gem 'devise', '3.0.3'
-gem 'redactor-rails'
+gem 'redactor-rails', '0.3.2'
 gem 'carrierwave'
 gem 'mini_magick', '3.5.0'
-#gem 'will_paginate'
+gem 'strong_parameters'
+gem 'kaminari'
 #gem 'activeadmin'
 #gem 'sidekiq'
 gem 'slim'

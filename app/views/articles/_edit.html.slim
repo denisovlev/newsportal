@@ -1,0 +1,30 @@
+= form_for article do |f|
+	legend New Article
+	.control-group
+		= f.label :header, class: "control-label"
+		.controls
+			= f.text_field :header, class: "input-block-level"	
+
+	.control-group
+		= f.label :preview, class: "control-label"
+		.controls
+			= f.text_area :preview, rows: "3", class: "input-block-level"
+
+	.control-group
+		= f.label :body, class: "control-label"
+		.controls
+			= f.text_area :body, rows: "5", class: "input-block-level redactor", id: 'redactor'
+	.control-group 
+		= f.label :categories, class: "control-label"
+		.controls
+			select multiple="multiple" id="article_categories" name="article[category_ids][]"
+				- categories.each do |cat|
+					- selected = false
+					- (selected = "selected") if article.categories.include?(cat)
+					option value=cat.id selected=selected
+						= cat.name
+	= f.hidden_field :user_id
+	hr
+	.control-group
+		.controls
+			== f.submit "Create Article", class: "btn btn-primary"

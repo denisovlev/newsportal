@@ -4,7 +4,11 @@ NewsPortal::Application.routes.draw do
 
   devise_for :users
 
-  root to: 'application#index'
+  root to: 'articles#index'
+  resources :articles
+  resources :categories, only: [:show] do
+    resources :articles
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

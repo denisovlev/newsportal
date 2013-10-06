@@ -16,6 +16,10 @@ html
 				- if alert
 					p.alert.alert-error
 						= alert
+				- if flash[:notice]
+					= render 'layouts/notice'
+				- if flash[:error]
+					=render 'layouts/error'
 				= yield
 			#push
 		= render template: "layouts/footer"
