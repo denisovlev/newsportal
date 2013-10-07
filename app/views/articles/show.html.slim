@@ -8,3 +8,10 @@ p
 		- @article.categories.each do |cat|
 			li
 				= link_to cat.name, category_path(cat)
+
+h2 Comments
+p
+	= link_to 'Add a comment', new_article_comment_path(@article)
+
+ul 
+	= render partial: 'comments/comment', collection: @article.comments.order('created_at ASC')

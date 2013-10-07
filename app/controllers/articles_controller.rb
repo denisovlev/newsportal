@@ -18,11 +18,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		if current_user.id.to_s != params[:article][:user_id]
-			#flash.keep
-			redirect_to :root, :flash => { :error => "Error" }
-			return
-		end
 		@article = current_user.articles.new(article_params)
 		if @article.save
 			redirect_to @article

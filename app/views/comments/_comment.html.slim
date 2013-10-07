@@ -1,0 +1,8 @@
+li.comment
+	div
+		= comment.body
+	p
+		= link_to 'Add a reply', new_comment_comment_path(comment)
+	- unless comment.comments.empty?
+		ul 
+			= render partial: 'comments/comment', collection: comment.comments.order('created_at ASC')

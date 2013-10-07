@@ -5,7 +5,15 @@ NewsPortal::Application.routes.draw do
   devise_for :users
 
   root to: 'articles#index'
-  resources :articles
+
+  resources :comments do
+    resources :comments
+  end
+
+  resources :articles do
+    resources :comments
+  end
+
   resources :categories, only: [:show] do
     resources :articles
   end
