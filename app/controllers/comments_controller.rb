@@ -17,8 +17,8 @@ class CommentsController < ApplicationController
 	protected
 
 	def get_parent
-		@parent = Article.where(id: params[:article_id]).first if params[:article_id]
-		@parent = Comment.where(id: params[:comment_id]).first if params[:comment_id]
+		@parent = Article.find(params[:article_id]) if params[:article_id]
+		@parent = Comment.find(params[:comment_id]) if params[:comment_id]
 
 		redirect_to root_path unless defined?(@parent)
 	end

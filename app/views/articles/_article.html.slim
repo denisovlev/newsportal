@@ -8,6 +8,6 @@ div
 		ul
 			- article.categories.each do |cat|
 				li
-					= link_to cat.name, category_path(cat)
+					= link_to cat.name, category_articles_path(cat)
 	= link_to('View more', article)
 	hr

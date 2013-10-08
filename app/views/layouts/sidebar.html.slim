@@ -1,0 +1,17 @@
+- if user_signed_in? 
+	- categories = Category.user_subscribed(current_user.id)
+- else
+	- categories = Category.all
+	
+
+- if categories.any?
+	h2 Categories
+	ul
+		- categories.each do |cat|
+			li 
+				=' link_to cat.name, category_articles_path(cat)
+				- if user_signed_in?
+					- if cat.subscribed
+						= link_to "unsubscribe", subscription_path(cat.subscription_id), method: :delete, class: "label label-important"
+					- else
+						= link_to "subscribe", subscriptions_path(category_id: cat.id), method: :post, class: "label label-success"

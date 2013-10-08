@@ -6,6 +6,5 @@
 			= f.text_area :body, rows: "5", class: "input-block-level"
 	.control-group
 		.controls
-			= f.submit "Create Comment", class: "btn btn-primary"
-			div
-				= link_to "Cancel", article_path(@comment.article), class: "btn"
+			=' f.submit "Create Comment", class: "btn btn-primary"
+			= link_to "Cancel", article_path(@comment.article), class: "btn"

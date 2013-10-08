@@ -1,0 +1,9 @@
+- if @subscriptions.any?
+	h2 Your subscriptions
+	ul
+		- @subscriptions.each do |s|
+			li
+				=' link_to s.category.name, category_articles_path(s.category)
+				= link_to "unsubscribe", subscription_path(s.id), method: :delete, class: "label label-important"
+- else
+	| No subscriptions found

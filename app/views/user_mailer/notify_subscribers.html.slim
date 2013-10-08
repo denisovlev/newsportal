@@ -1,0 +1,8 @@
+h1 New article
+
+h2 
+	= @article.header
+
+p 
+	= @article.preview
+= link_to 'Full text', article_url(@article)

@@ -4,7 +4,6 @@ h1
 		| Articles in #{@category.name}
 	- else 
 		| Articles
-.row
-	.span8
-		= render(partial: 'articles/article', collection: @articles)
-		= paginate @articles
+
+= render(partial: 'articles/article', collection: @articles)
+= paginate @articles

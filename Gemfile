@@ -31,7 +31,7 @@ gem 'mini_magick', '3.5.0'
 gem 'strong_parameters'
 gem 'kaminari'
 #gem 'activeadmin'
-#gem 'sidekiq'
+gem 'delayed_job_active_record'
 gem 'slim'
 
 # To use ActiveModel has_secure_password

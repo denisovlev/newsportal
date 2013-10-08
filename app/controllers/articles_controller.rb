@@ -20,8 +20,10 @@ class ArticlesController < ApplicationController
 	def create
 		@article = current_user.articles.new(article_params)
 		if @article.save
+			UserMailer.delay.notify_subscribers(@article)
 			redirect_to @article
 		else
+			@categories = Category.all
 			render 'new'
 		end
 	end

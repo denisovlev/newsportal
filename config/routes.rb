@@ -17,6 +17,9 @@ NewsPortal::Application.routes.draw do
   resources :categories, only: [:show] do
     resources :articles
   end
+
+  resources :subscriptions
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
