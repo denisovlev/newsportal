@@ -18,5 +18,5 @@ h2 Comments
 p
 	= link_to 'Add a comment', new_article_comment_path(@article)
 
-ul 
+ul.comment-root 
 	= render partial: 'comments/comment', collection: @article.comments.order('created_at ASC')

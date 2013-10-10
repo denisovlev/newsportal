@@ -1,4 +1,4 @@
-div
+div.article
 	h2  
 		a 
 		= article.header
@@ -10,5 +10,7 @@ div
 			- article.categories.each do |cat|
 				li
 					= link_to cat.name, category_articles_path(cat)
-	= link_to('View more', article)
+	=' link_to('View more', article)
+	- if current_user.admin?
+		=' link_to "Delete", article_path(article), method: :delete, class: "delete-article"
 	hr

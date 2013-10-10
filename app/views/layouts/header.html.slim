@@ -5,6 +5,9 @@
 		ul.nav.pull-right
 			- if user_signed_in?
 				li
+					div.navbar-email
+						= current_user.email
+				li
 					= link_to "New Article", new_article_path
 				li
 					= link_to "Logout", destroy_user_session_path, method: :delete

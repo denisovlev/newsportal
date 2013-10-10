@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 	before_filter :sign_in_user, only: [:new, :edit, :create, :update]
 	before_filter :belongs_to_user, only: [:edit, :update]
+	before_filter :is_admin, only: [:destroy]
 
 	def index 
 		@articles = Article.get_paginated_articles(params[:page], params[:category_id])
@@ -36,6 +37,15 @@ class ArticlesController < ApplicationController
 		end
 	end
 
+	def destroy
+		article = Article.find(params[:id])
+		article.destroy
+		respond_to do |format|
+			format.html { redirect_to root_path }
+			format.json { render json: true }
+		end
+	end
+
 	private
 
 	def article_params
@@ -51,5 +61,9 @@ class ArticlesController < ApplicationController
 		if current_user.id != @article.user.id
 			redirect_to @article, flash:  "You do not have permission to edit this article"
 		end
+	end
+
+	def is_admin
+		current_user.admin?
 	end
 end

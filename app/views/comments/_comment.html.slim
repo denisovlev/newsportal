@@ -1,8 +1,13 @@
 li.comment
-	div
-		= comment.body
+	div.comment-body
+		- unless comment.deleted
+			= comment.body
+		- else 
+			| Deleted
 	p
-		= link_to 'Add a reply', new_comment_comment_path(comment)
+		=' link_to 'Add a reply', new_comment_comment_path(comment)
+		- if current_user.admin? && !comment.deleted
+			=' link_to 'Delete', comment_comment_path(comment), method: :delete, class: "delete-comment"
 	- unless comment.comments.empty?
-		ul 
+		ul.comment-tree 
 			= render partial: 'comments/comment', collection: comment.comments.order('created_at ASC')

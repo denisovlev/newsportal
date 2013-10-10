@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 	before_filter :get_parent
+	before_filter :is_admin, only: [:destroy]
 
 	def new
 		@comment = @parent.comments.build
@@ -14,6 +15,23 @@ class CommentsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@parent.update_attribute(:deleted, true)
+		respond_to do |format|
+			format.html do
+				if @parent.article
+					redirect_to @parent.article
+				else
+					redirect_to @parent
+				end
+			end
+			format.json {
+				render json: true
+			}
+		end
+		
+	end
+
 	protected
 
 	def get_parent
@@ -21,5 +39,9 @@ class CommentsController < ApplicationController
 		@parent = Comment.find(params[:comment_id]) if params[:comment_id]
 
 		redirect_to root_path unless defined?(@parent)
+	end
+
+	def is_admin
+		current_user.admin?
 	end
 end
