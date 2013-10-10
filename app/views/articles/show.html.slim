@@ -1,5 +1,6 @@
 h1
 	= @article.header
+= time_tag	@article.created_at, pubdate: true
 p
 	== @article.body
 
@@ -8,6 +9,10 @@ p
 		- @article.categories.each do |cat|
 			li
 				= link_to cat.name, category_path(cat)
+
+- if current_user == @article.user
+	p
+		= link_to 'Edit article', edit_article_path(@article)
 
 h2 Comments
 p

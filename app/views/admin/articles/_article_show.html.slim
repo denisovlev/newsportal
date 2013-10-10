@@ -1,0 +1,19 @@
+h2
+	= article.header
+p 
+	= article.preview
+p 
+	== article.body
+p 
+	=' link_to "Delete", [:admin, article], method: :delete
+	=' link_to "Edit", edit_admin_article_path(article)
+	- unless article.moderated
+		=' link_to "Moderate", admin_article_path(article)+"/moderate", method: :post
+	- else 
+		=' link_to "Unmoderate", admin_article_path(article)+"/unmoderate", method: :post
+- if article.categories.any?
+	h3 Categories
+	ul
+		- article.categories.each do |cat|
+			li
+				= link_to cat.name, edit_admin_category_path(cat)

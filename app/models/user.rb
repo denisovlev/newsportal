@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 	attr_accessible :email, :password, :password_confirmation, :remember_me
 	accepts_nested_attributes_for :subscriptions
 
+	scope :today, lambda { { conditions: ["created_at >= ?", Time.zone.now.beginning_of_day] } }
+
 	def self.get_subscribers(categories)
 		return User.select('users.id, email').joins(:categories).where(categories: {id: categories})
 	end

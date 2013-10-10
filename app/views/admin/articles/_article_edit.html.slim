@@ -1,7 +1,7 @@
 - categories = Category.all
-= form_for article do |f|
+= semantic_form_for [:admin, @article] do |f|
 	legend 
-		- if article.new_record? 
+		- if @article.new_record? 
 			| New Article
 		- else
 			| Edit Article
@@ -25,13 +25,13 @@
 			select multiple="multiple" id="article_categories" name="article[category_ids][]"
 				- categories.each do |cat|
 					- selected = false
-					- (selected = "selected") if article.categories.include?(cat)
+					- (selected = "selected") if @article.categories.include?(cat)
 					option value=cat.id selected=selected
 						= cat.name
 	hr
 	.control-group
 		.controls
-			- if article.new_record? 
+			- if @article.new_record? 
 				= f.submit "Create Article", class: "btn btn-primary"
 			- else
 				= f.submit "Edit Article", class: "btn btn-primary"

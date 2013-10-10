@@ -1,0 +1,15 @@
+section
+	h2 
+		= link_to article.header, [:admin, article]
+	p 
+		= article.preview
+	p 
+		== article.body
+	p 
+		=' link_to "Delete", [:admin, article], method: :delete
+		=' link_to "Edit", edit_admin_article_path(article)
+		- unless article.moderated
+			=' link_to "Moderate", admin_article_path(article)+"/moderate", method: :post
+		- else 
+			=' link_to "Unmoderate", admin_article_path(article)+"/unmoderate", method: :post
+	hr

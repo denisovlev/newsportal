@@ -8,4 +8,9 @@ class UserMailer < ActionMailer::Base
 		.map {|user| user.email }
 		mail bcc: subscribers, subject: "New article in category you subscribed at"
 	end
+
+	def article_rejected(article)
+		@article = article
+		mail to: article.user.email, subject: "Your article was rejected"
+	end
 end

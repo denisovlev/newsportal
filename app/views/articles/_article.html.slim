@@ -2,6 +2,7 @@ div
 	h2  
 		a 
 		= article.header
+	= time_tag	article.created_at, pubdate: true
 	p 
 		= article.preview
 	- if article.categories.any?
