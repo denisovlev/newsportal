@@ -32,7 +32,10 @@
 	.control-group
 		.controls
 			- if article.new_record? 
-				= f.submit "Create Article", class: "btn btn-primary"
+				=' f.submit "Create Article", class: "btn btn-primary"
+				= link_to "Cancel", root_path, class: "btn"
 			- else
-				= f.submit "Edit Article", class: "btn btn-primary"
+				=' f.submit "Edit Article", class: "btn btn-primary"
+				= link_to "Cancel", article, class: "btn"
+
 			

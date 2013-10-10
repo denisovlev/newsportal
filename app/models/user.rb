@@ -17,4 +17,12 @@ class User < ActiveRecord::Base
 	def self.get_subscribers(categories)
 		return User.select('users.id, email').joins(:categories).where(categories: {id: categories})
 	end
+
+	def become_admin!
+		self.update_attribute(:admin, true)
+	end
+
+	def admin?
+		self.admin
+	end
 end

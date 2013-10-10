@@ -1,14 +1,13 @@
 NewsPortal::Application.routes.draw do
 
   root to: 'articles#index'
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  
   ActiveAdmin.routes(self)
 
   mount RedactorRails::Engine => '/redactor_rails'
 
   devise_for :users
-  ActiveAdmin.routes(self)
+
 
   resources :comments do
     resources :comments
