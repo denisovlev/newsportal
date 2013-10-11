@@ -250,5 +250,5 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
   require "omniauth-facebook"
-  config.omniauth :facebook, '1422145947998284', 'df10227f92c0954dff22e39e6c73cef0'
+  config.omniauth :facebook, '1422145947998284', 'df10227f92c0954dff22e39e6c73cef0', {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 end
