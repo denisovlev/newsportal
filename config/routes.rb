@@ -17,6 +17,8 @@ NewsPortal::Application.routes.draw do
     resources :comments
   end
 
+  get 'tags/:tag', to: 'articles#index', as: :tag
+
   resources :categories, only: [:show] do
     resources :articles
   end

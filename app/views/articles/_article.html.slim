@@ -5,6 +5,8 @@ div.article
 	= time_tag	article.created_at, pubdate: true
 	p 
 		= article.preview
+	div
+		== article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 	- if article.categories.any?
 		ul
 			- article.categories.each do |cat|

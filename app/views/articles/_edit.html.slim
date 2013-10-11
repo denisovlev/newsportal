@@ -28,6 +28,11 @@
 					- (selected = "selected") if article.categories.include?(cat)
 					option value=cat.id selected=selected
 						= cat.name
+	.control-group
+		= f.label :tag_list, "Tags (separated by commas)", class: "control-label"
+		.controls
+			= f.text_field :tag_list, class: "input-block-level"
+
 	hr
 	.control-group
 		.controls

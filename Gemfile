@@ -36,6 +36,7 @@ gem 'delayed_job_active_record'
 gem 'slim'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'acts-as-taggable-on'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

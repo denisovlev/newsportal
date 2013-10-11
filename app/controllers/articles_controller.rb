@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
 	before_filter :is_admin, only: [:destroy]
 
 	def index 
-		@articles = Article.get_paginated_articles(params[:page], params[:category_id])
+		if params[:tag]
+			@articles = Article.get_paginated_articles(params[:page], params[:category_id]).tagged_with(params[:tag])
+		else
+			@articles = Article.get_paginated_articles(params[:page], params[:category_id])
+		end
 	end
 
 	def show
@@ -49,7 +53,7 @@ class ArticlesController < ApplicationController
 	private
 
 	def article_params
-		params.require(:article).permit(:header, :preview, :body, category_ids: [])
+		params.require(:article).permit(:header, :preview, :body, :tag_list, category_ids: [])
 	end
 
 	def sign_in_user
