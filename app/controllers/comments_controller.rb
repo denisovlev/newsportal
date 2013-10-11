@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@parent.update_attribute(:deleted, true)
+		@parent.update_attribute!(:deleted, true)
 		respond_to do |format|
 			format.html do
 				if @parent.article

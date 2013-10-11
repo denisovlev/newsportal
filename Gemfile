@@ -34,6 +34,8 @@ gem 'activeadmin', github: 'gregbell/active_admin', branch: '0-6-stable'
 gem 'ransack'
 gem 'delayed_job_active_record'
 gem 'slim'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

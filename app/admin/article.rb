@@ -17,13 +17,13 @@ ActiveAdmin.register Article do
 	member_action :moderate, method: :post do
 		article = Article.find(params[:id])
 		article.set_moderated(true)
-		redirect_to [:admin, article]
+		redirect_to admin_articles_path
 	end
 
 	member_action :unmoderate, method: :post do
 		article = Article.find(params[:id])
 		article.set_moderated(false)
-		redirect_to [:admin, article]
+		redirect_to admin_articles_path
 	end
 
 	member_action :reject, method: :post do
