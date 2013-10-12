@@ -3,11 +3,18 @@ class ArticlesController < ApplicationController
 	before_filter :belongs_to_user, only: [:edit, :update]
 	before_filter :is_admin, only: [:destroy]
 
-	def index 
-		if params[:tag]
-			@articles = Article.get_paginated_articles(params[:page], params[:category_id]).tagged_with(params[:tag])
-		else
-			@articles = Article.get_paginated_articles(params[:page], params[:category_id])
+	def index
+		page = params[:page] || 1
+		if params[:query] 
+			@articles = Article.search Riddle::Query.escape(params[:query]), page: page, populate: true
+			@articles.context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
+			render 'search/index'
+		else 
+			if params[:tag]
+				@articles = Article.get_paginated_articles(page, params[:category_id]).tagged_with(params[:tag])
+			else 
+				@articles = Article.get_paginated_articles(page, params[:category_id])
+			end
 		end
 	end
 

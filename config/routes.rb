@@ -17,13 +17,14 @@ NewsPortal::Application.routes.draw do
     resources :comments
   end
 
-  get 'tags/:tag', to: 'articles#index', as: :tag
-
   resources :categories, only: [:show] do
     resources :articles
   end
 
   resources :subscriptions
+
+  get 'tags/:tag', to: 'articles#index', as: :tag
+  get 'search', to: 'articles#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

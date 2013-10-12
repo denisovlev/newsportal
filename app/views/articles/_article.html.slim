@@ -1,7 +1,7 @@
 div.article
 	h2  
 		a 
-		= article.header
+		= link_to article.header, article
 	= time_tag	article.created_at, pubdate: true
 	p 
 		= article.preview

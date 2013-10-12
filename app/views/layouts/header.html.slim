@@ -3,6 +3,8 @@
 		a.brand href="/" News Portal
 
 		ul.nav.pull-right
+			li
+				= render partial: 'layouts/search'
 			- if user_signed_in?
 				li
 					div.navbar-email
