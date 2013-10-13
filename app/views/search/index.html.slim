@@ -1,0 +1,12 @@
+/= @articles.inspect
+h1 
+	- if @category
+		| Articles in #{@category.name}
+	- else 
+		| Articles
+
+- if @articles.any?
+	= render(partial: 'search/article', collection: @articles)
+- else 
+	| There is no articles
+= paginate @articles
