@@ -11,7 +11,7 @@ li.comment
 	p
 		=' link_to 'Add a reply', new_comment_comment_path(comment)
 		- if current_user && current_user.admin? && !comment.deleted
-			=' link_to 'Delete', comment_comment_path(comment), method: :delete, class: "delete-comment"
+			=' link_to 'Delete', comment_comment_path(comment), remote: true, method: :delete, data: {type: "json",delete_comment: "delete-comment"}
 	- unless comment.comments.empty?
 		ul.comment-tree 
 			= render partial: 'comments/comment', collection: comment.comments.order('created_at ASC')

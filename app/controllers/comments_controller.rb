@@ -22,11 +22,12 @@ class CommentsController < ApplicationController
 		respond_to do |format|
 			format.html do
 				if @parent.article
-					redirect_to @parent.article
+					redirect_to @parent.article, status: 303
 				else
-					redirect_to @parent
+					redirect_to @parent, status: 303
 				end
 			end
+			format.js { render nothing: true }
 			format.json {
 				render json: true
 			}

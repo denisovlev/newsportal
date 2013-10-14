@@ -47,6 +47,7 @@ class ArticlesController < ApplicationController
 		article.destroy
 		respond_to do |format|
 			format.html { redirect_to root_path }
+			format.js { render nothing: true }
 			format.json { render json: true }
 		end
 	end

@@ -14,5 +14,5 @@ div.article
 					= link_to cat.name, category_articles_path(cat)
 	=' link_to('View more', article)
 	- if current_user && current_user.admin?
-		=' link_to "Delete", article_path(article), method: :delete, class: "delete-article"
+		=' link_to "Delete", article_path(article), remote: true, method: :delete, data: {type: "json", delete_article: "delete-article"}
 	hr
