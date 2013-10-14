@@ -9,6 +9,8 @@ p
 	=' link_to "Edit", edit_admin_article_path(article)
 	- unless article.moderated
 		=' link_to "Moderate", admin_article_path(article)+"/moderate", method: :post
+		- unless article.rejected
+			=' link_to "Reject", admin_article_path(article)+"/reject", method: :post
 	- else 
 		=' link_to "Unmoderate", admin_article_path(article)+"/unmoderate", method: :post
 - if article.categories.any?

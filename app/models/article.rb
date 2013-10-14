@@ -11,8 +11,10 @@ class Article < ActiveRecord::Base
 	validates :preview, presence: true
 	validates :body, presence: true
 
-	scope :not_moderated, where(moderated: false)
+	scope :not_moderated, where(moderated: false).where(rejected: false)
 	scope :only_moderated, where(moderated: true)
+	scope :rejected, where(rejected: true)
+	scope :not_rejected, where(rejected: false)
 	scope :today, lambda { { conditions: ["created_at >= ?", Time.zone.now.beginning_of_day] } }
 
 	acts_as_taggable
@@ -43,6 +45,8 @@ class Article < ActiveRecord::Base
 	end
 
 	def reject!
+		self.update_attribute(:rejected, true)
+		self.save
 		UserMailer.delay.article_rejected(self.id)
 	end
 

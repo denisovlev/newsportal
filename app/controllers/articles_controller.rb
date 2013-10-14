@@ -34,6 +34,7 @@ class ArticlesController < ApplicationController
 
 	def update
 		@article.update_attributes(article_params)
+		@article.update_attribute(:rejected, false)
 		if @article.save
 			redirect_to @article
 		else

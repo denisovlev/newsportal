@@ -1,6 +1,9 @@
 ActiveAdmin.register Article do
 	scope :all, :default => true
 	scope :not_moderated
+	scope :only_moderated
+	scope :rejected
+
 	index do
 		articles.each do |article|
 			render partial: 'article', locals: {article: article}
@@ -29,6 +32,6 @@ ActiveAdmin.register Article do
 	member_action :reject, method: :post do
 		article = Article.find(params[:id])
 		article.reject!
-		redirect_to [:admin, article]
+		redirect_to admin_articles_path
 	end
 end

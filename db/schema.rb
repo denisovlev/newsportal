@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014095706) do
+ActiveRecord::Schema.define(:version => 20131014114149) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20131014095706) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "moderated",  :default => false, :null => false
+    t.boolean  "rejected"
   end
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
