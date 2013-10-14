@@ -32,7 +32,14 @@ class Article < ActiveRecord::Base
 
 	def set_moderated(moderated)
 		update_attribute(:moderated, moderated)
-		UserMailer.delay.notify_subscribers(self.id)
+		UserMailer.delay.article_accepted(self.id)
+		users = User.get_subscribers(self.categories)
+		users.each do |user|
+		 	if user.id != self.user.id
+				UserMailer.delay.notify_subscriber(self.id, user.id)
+			end
+		end
+		
 	end
 
 	def reject!
