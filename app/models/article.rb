@@ -11,7 +11,7 @@ class Article < ActiveRecord::Base
 	validates :preview, presence: true
 	validates :body, presence: true
 
-	scope :not_moderated, where(moderated: false).where(rejected: false)
+	scope :not_moderated, where(moderated: false) 
 	scope :only_moderated, where(moderated: true)
 	scope :rejected, where(rejected: true)
 	scope :not_rejected, where(rejected: false)
@@ -34,6 +34,13 @@ class Article < ActiveRecord::Base
 
 	def set_moderated(moderated)
 		update_attribute(:moderated, moderated)
+		if moderated
+			update_attribute(:rejected, false)
+			notify_moderated
+		end
+	end
+
+	def notify_moderated
 		UserMailer.delay.article_accepted(self.id)
 		users = User.get_subscribers(self.categories)
 		users.each do |user|
@@ -41,7 +48,6 @@ class Article < ActiveRecord::Base
 				UserMailer.delay.notify_subscriber(self.id, user.id)
 			end
 		end
-		
 	end
 
 	def reject!
