@@ -1,7 +1,11 @@
 li.comment
 	div.comment-body
 		- unless comment.deleted
+			div
+				= "#{comment.author_name}:"
 			= comment.body
+			div
+				=' time_tag	comment.created_at, pubdate: true
 		- else 
 			| Deleted
 	p

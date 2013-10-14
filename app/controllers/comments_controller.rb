@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = @parent.comments.build(params[:comment])
+		@comment.user_id = current_user.id if user_signed_in?
 		if @comment.save
 			redirect_to article_path(@comment.article)
 		else
@@ -16,7 +17,8 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@parent.update_attribute!(:deleted, true)
+		@parent.update_attribute(:deleted, true)
+		@parent.save
 		respond_to do |format|
 			format.html do
 				if @parent.article
