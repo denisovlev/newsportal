@@ -9,6 +9,9 @@ class ArticlesController < ApplicationController
 		else
 			@articles = Article.get_paginated_articles(params[:page], params[:category_id])
 		end
+		if params[:category_id]
+			@category = Category.find(params[:category_id])
+		end
 	end
 
 	def show

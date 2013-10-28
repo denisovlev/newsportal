@@ -1,9 +1,9 @@
 /= @articles.inspect
 h1 
 	- if @category
-		| Articles in #{@category.name}
+		| #{@category.name}
 	- else 
-		| Articles
+		| Статьи
 
 - if @articles.any?
 	= render(partial: 'articles/article', collection: @articles)

@@ -1,10 +1,10 @@
 - categories = Category.all
 	
 - if categories.any?
-	h2 Categories
+	h2 Категории
 	ul
 		li
-			=' link_to "All", root_path
+			=' link_to "Все", root_path
 		- categories.each do |cat|
 			li 
 				=' link_to cat.name, category_articles_path(cat)
