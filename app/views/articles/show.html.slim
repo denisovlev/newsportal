@@ -4,13 +4,13 @@ h1
 p
 	== @article.body
 div
-	== @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+	== @article.tag_list.map { |t| link_to t, tag_path(t), class: "label" }.join('')
 
 - if @article.categories
-	ul
+	ul.cat-list
 		- @article.categories.each do |cat|
 			li
-				= link_to cat.name, category_path(cat)
+				= link_to cat.name, category_path(cat), class: 'badge'
 
 - if current_user == @article.user
 	p

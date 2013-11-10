@@ -6,7 +6,7 @@ div.article
 	p 
 		== article.preview
 	div
-		== article.tag_list.map { |t| link_to t, tag_path(t), class: "label" }.join(', ')
+		== article.tag_list.map { |t| link_to t, tag_path(t), class: "label" }.join('')
 	- if article.categories.any?
 		ul.cat-list
 			- article.categories.each do |cat|
