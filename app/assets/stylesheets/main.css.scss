@@ -10,7 +10,8 @@ ul {
 }
 
 body {
-	background: url('/assets/bg.jpg') repeat;
+	background: url('/assets/bg_photo.jpg') center center;
+	background-attachment: fixed;
 }
 
 .main-area {
@@ -30,6 +31,10 @@ body {
 	height: 100%;
 	/* Negative indent footer by it's height */
 	margin: 0 auto -60px;
+
+	&.container {
+		background: #fff;
+	}
 }
 
 /* Set the fixed height of the footer here */
@@ -74,4 +79,12 @@ ul.comment-tree {
 time {
 	font-size: 12px;
 	color: #aaa;
+}
+
+.cat-list {
+	margin: 5px 0;
+	li {
+		display: inline;
+		margin-right: 5px;
+	}
 }

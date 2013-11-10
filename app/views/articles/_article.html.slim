@@ -6,13 +6,13 @@ div.article
 	p 
 		== article.preview
 	div
-		== article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+		== article.tag_list.map { |t| link_to t, tag_path(t), class: "label" }.join(', ')
 	- if article.categories.any?
-		ul
+		ul.cat-list
 			- article.categories.each do |cat|
 				li
-					= link_to cat.name, category_articles_path(cat)
-	=' link_to('View more', article)
+					= link_to cat.name, category_articles_path(cat), class: 'badge'
+	=' link_to('View more', article, class: "btn")
 	- if current_user && current_user.admin?
-		=' link_to "Delete", article_path(article), remote: true, method: :delete, data: {type: "json", delete_article: "delete-article"}
+		=' link_to "Delete", article_path(article), remote: true, method: :delete, data: {type: "json", delete_article: "delete-article"}, class: "btn btn-danger"
 	hr
