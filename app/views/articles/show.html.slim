@@ -4,7 +4,7 @@ h1
 p
 	== @article.body
 div
-	== @article.tag_list.map { |t| link_to t, tag_path(t), class: "label" }.join('')
+	== @article.tag_list.map { |t| link_to t, tag_path(t), class: "label" }.join(', ')
 
 - if @article.categories
 	ul.cat-list
